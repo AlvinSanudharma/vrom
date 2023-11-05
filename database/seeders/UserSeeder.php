@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
 
 class UserSeeder extends Seeder
 {
@@ -15,14 +15,22 @@ class UserSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {   
+        Schema::disableForeignKeyConstraints();
+
         User::truncate();
 
         $users = [
-            'name' => 'admin', 
-            'email' => 'admin@email.com', 
-            'password' => Hash::make('password'), 
-            'roles' => 'ADMIN', 
+            [
+                'name' => 'admin', 
+                'email' => 'admin@email.com', 
+                'password' => Hash::make('password'), 
+                'roles' => 'ADMIN', 
+            ],
         ];
+
+        User::insert($users);
+
+        Schema::enableForeignKeyConstraints();
     }
 }
