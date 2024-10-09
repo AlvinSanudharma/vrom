@@ -20,14 +20,12 @@ class BrandSeeder extends Seeder
 
         Brand::truncate();
 
-        $brands = [
+        Brand::create(
             [
                 'name' => 'Porsche',
-                'slug' => 'porsche-001'
+                'slug' => 'porsche-ert'
             ],
-        ];
-
-        Brand::insert($brands);
+        );
 
         Schema::enableForeignKeyConstraints();
     }

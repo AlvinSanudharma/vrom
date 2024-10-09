@@ -51,6 +51,19 @@
             + Buat Brand
           </a>
         </div>
+        @if (session('success'))
+            <div x-data="{ show: true }" x-show="show" class="mb-5" role="alert">
+                <div class="flex justify-between items-center px-4 py-3 text-green-700 bg-green-100 border border-green-400 rounded">
+                    <p>{{ session('success') }}</p>
+                    <!-- Close Button -->
+                    <button @click="show = false" class="text-green-700 hover:text-green-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        @endif
         <div class="overflow-hidden shadow sm:rounded-md">
           <div class="px-4 py-5 bg-white sm:p-6">
             <table id="dataTable">
